@@ -72,36 +72,36 @@ INSERT INTO Produto (idProduto, nome, quantidade, precoVenda) VALUES (1, 'Banana
 INSERT INTO Produto (idProduto, nome, quantidade, precoVenda) VALUES (2, 'Laranja', 500, 2.00);
 INSERT INTO Produto (idProduto, nome, quantidade, precoVenda) VALUES (3, 'Manga', 800, 4.00);
 
--- Inserir Pessoa
+
 INSERT INTO Pessoa (idPessoa, nome, logradouro, cidade, estado, telefone, email) VALUES (7, 'Joao', 'Rua 12, casa 3, Quitanda', 'Riacho do Sul', 'PA', '1111-1111', 'email@example.com');
 
--- Inserir Pessoa F�sica
+
 INSERT INTO PessoaFisica (idPessoaFisica, cpf) VALUES (7, '11111111111');
 
--- Inserir Pessoa Jur�dica
+
 INSERT INTO Pessoa (idPessoa, nome, logradouro, cidade, estado, telefone, email) VALUES (15, 'JJC', 'Rua 11, Centro', 'Riacho do Norte', 'PA', '2222-2222', 'email@example.com');
 INSERT INTO PessoaJuridica (idPessoaJuridica, cnpj) VALUES (15, '22222222222222');
 
 
--- Movimenta��es de Venda (Sa�da)
+
 INSERT INTO MovimentoVenda (idMovimentoVenda, idProduto, idComprador, idOperador, quantidade, precoUnitario) VALUES (1, 1, 7, 1, 20, 4.00);
 INSERT INTO MovimentoVenda (idMovimentoVenda, idProduto, idComprador, idOperador, quantidade, precoUnitario) VALUES (4, 1, 7, 1, 15, 2.00);
 INSERT INTO MovimentoVenda (idMovimentoVenda, idProduto, idComprador, idOperador, quantidade, precoUnitario) VALUES (5, 1, 7, 2, 10, 3.00);
 
--- Movimenta��es de Compra (Entrada)
+
 INSERT INTO MovimentoCompra (idMovimentoCompra, idProduto, idFornecedor, idOperador, quantidade, precoUnitario) VALUES (7, 1, 15, 1, 15, 5.00);
 INSERT INTO MovimentoCompra (idMovimentoCompra, idProduto, idFornecedor, idOperador, quantidade, precoUnitario) VALUES (8, 1, 15, 1, 20, 4.00);
 
 
--- Dados de pessoas f�sicas
+
 SELECT * FROM Pessoa INNER JOIN PessoaFisica ON Pessoa.idPessoa = PessoaFisica.idPessoaFisica;
 
--- Dados de pessoas jur�dicas
+
 SELECT * FROM Pessoa INNER JOIN PessoaJuridica ON Pessoa.idPessoa = PessoaJuridica.idPessoaJuridica;
 
 
 
--- Valor total das entradas agrupadas por produto
+
 SELECT idProduto, SUM(quantidade * precoUnitario) AS TotalEntradas FROM MovimentoCompra GROUP BY idProduto;
 
 
